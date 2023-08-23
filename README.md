@@ -1,2 +1,3 @@
-# stytch-flutter-example
-An example mobile application featuring SMS OTP login powered by Stytch. Built with Flutter
+# stytch_flutter_example
+
+A new Flutter project.
