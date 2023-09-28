@@ -46,6 +46,7 @@ class VerifyScreen extends StatefulWidget {
 
 class VerifyScreenState extends State<VerifyScreen> {
   String otpCode = '';
+  String errorMessage = '';
 
   @override
   void initState() {
@@ -84,7 +85,10 @@ class VerifyScreenState extends State<VerifyScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   onChanged: (value) {
-                    otpCode = value;
+                    setState(() {
+                      errorMessage = '';
+                      otpCode = value;
+                    });
                     if (value.length == 6) {
                       authenticate(widget.methodId, otpCode).then((response) {
                         Navigator.push(
@@ -95,16 +99,28 @@ class VerifyScreenState extends State<VerifyScreen> {
                                   phoneId: response.methodId,
                                   phoneNumber: widget.phoneNumber)),
                         );
+                      }).catchError((error) {
+                        setState(() {
+                          errorMessage = error.toString();
+                        });
                       });
                     }
                   },
                   decoration: const InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF19303D)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF19303D)),
-                    ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF19303D)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF19303D)),
+                      ),
+                      hintText: '123456'),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  errorMessage,
+                  style: GoogleFonts.ibmPlexSans(
+                    color: const Color(0xFF19303D),
+                    fontSize: 12,
                   ),
                 ),
                 const SizedBox(height: 16),

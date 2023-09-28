@@ -40,6 +40,7 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   String phoneNumber = '';
+  String errorMessage = '';
 
   @override
   void initState() {
@@ -68,15 +69,26 @@ class LoginScreenState extends State<LoginScreen> {
                 const Spacer(),
                 TextField(
                   onChanged: (value) {
-                    phoneNumber = value;
+                    setState(() {
+                      errorMessage = '';
+                      phoneNumber = value;
+                    });
                   },
                   decoration: const InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF19303D)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF19303D)),
-                    ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF19303D)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF19303D)),
+                      ),
+                      hintText: '+11234567890'),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  errorMessage,
+                  style: GoogleFonts.ibmPlexSans(
+                    color: const Color(0xFF19303D),
+                    fontSize: 12,
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -101,6 +113,10 @@ class LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       );
+                    }).catchError((error) {
+                      setState(() {
+                        errorMessage = error.toString();
+                      });
                     });
                   },
                   child: const Text('Continue'),

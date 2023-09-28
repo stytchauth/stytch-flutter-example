@@ -50,18 +50,6 @@ class LoginResponse {
   }
 }
 
-// {
-//   "status_code": 200,
-//   "request_id": "request-id-test-b05c992f-ebdc-489d-a754-c7e70ba13141",
-//   "user_id": "user-test-16d9ba61-97a1-4ba4-9720-b03761dc50c6",
-//   "user": {...},
-//   "method_id": "phone-number-test-d5a3b680-e8a3-40c0-b815-ab79986666d0",
-//   "reset_sessions": false,
-//   "session_jwt": "",
-//   "session_token": "",
-//   "session": null
-// }
-
 class AuthenticateResponse {
   final int statusCode;
   final String userId;
