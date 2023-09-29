@@ -1,5 +1,9 @@
 # Stytch Flutter example application
 
+<p align="center">
+  <img src="https://github.com/stytchauth/stytch-flutter-example/assets/109168256/eaed5a8f-e493-4890-ab5b-6ab7bf48b0e1" height="600">
+</p>
+
 ## Overview
 
 This example application demonstrates how one may use Stytch within a Flutter application.
