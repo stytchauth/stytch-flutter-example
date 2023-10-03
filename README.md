@@ -52,7 +52,7 @@ Add your `project_id` and `secret` to your `.vscode/launch.json` file:
 
 ## Running the app
 
-After completing all the set up steps above the application can be run as normally from VS Code.
+After completing all the set up steps above the application can be run as normally from VS Code. To learn how to run a Flutter app in VS Code, please refer to the [official Flutter docs](https://docs.flutter.dev/tools/vs-code#running-and-debugging).
 
 You'll be able to login with SMS OTP and see your values from your Stytch User object as well as see how logging out works.
 
